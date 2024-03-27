@@ -7,21 +7,18 @@
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginPageTest {
     // Initialize web driver
-    String systemDriverProperty = System.setProperty("webdriver.chrome.driver", "C:\\Users\\user\\Desktop\\Drivers New\\chromedriver.exe");
     WebDriver driverChrome = new ChromeDriver();
 
-
-    // Create a JavaScriptExecutor object for scrolling
-    JavascriptExecutor js = (JavascriptExecutor) driverChrome;
-
-    @Test(priority = 1)
-        // MW_1_01 Verify that landing page is functional
+    @Test (priority = 1)
+    // MW_1_01 Verify that landing page is functional
     void verifyLandingPageOpens() throws InterruptedException {
         // Open https://www.mathway.com and display site properties
         driverChrome.get("https://www.mathway.com/");
@@ -82,6 +79,10 @@ public class LoginPageTest {
         driverChrome.findElement(By.xpath("//*[@id=\"__next\"]/main/section/div/aside/div/div/div/div" +
                 "/div[1]/div/form/button/span/span[1]")).click();
     }
-
+    // Close web driver after login page tests complete
+    @AfterTest
+    void closeDriver() {
+        driverChrome.close();
+    }
 
 }
