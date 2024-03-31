@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 
@@ -13,51 +12,51 @@ import java.util.NoSuchElementException;
 
 public class SignupPageTest {
     // Initialize web driver
-    WebDriver driverChrome = new FirefoxDriver();
+    WebDriver driver = new FirefoxDriver();
     // Create a JavaScriptExecutor object for scrolling
-    JavascriptExecutor js = (JavascriptExecutor) driverChrome;
+    JavascriptExecutor js = (JavascriptExecutor) driver;
 
     @Test (priority = 1)
     // MW_2_01 Verify that sign-up button on landing page is functional
     void verifySignupButton() throws InterruptedException {
         // Open https://www.mathway.com and display site properties
-        driverChrome.get("https://www.mathway.com/");
-        driverChrome.manage().window().maximize();
+        driver.get("https://www.mathway.com/");
+        driver.manage().window().maximize();
 
         // Click the Account icon on landing page
-        driverChrome.findElement(By.xpath("//*[@id=\"top-menu\"]/div/div[2]/div[2]/i")).click();
+        driver.findElement(By.xpath("//*[@id=\"top-menu\"]/div/div[2]/div[2]/i")).click();
         //Thread.sleep(1000);
         // Click the "Sign Up" button from dropdown
-        driverChrome.findElement(By.xpath("//*[@id=\"user-menu\"]/a[2]/div[2]")).click();
+        driver.findElement(By.xpath("//*[@id=\"user-menu\"]/a[2]/div[2]")).click();
     }
     @Test (priority = 2)
     // MW_2_02 Verify that email address input is functional
     void verifyEmailAddressInput() {
         // Input test email
-        driverChrome.findElement(By.id("signup_email_autocomplete")).sendKeys
+        driver.findElement(By.id("signup_email_autocomplete")).sendKeys
                 ("testemail@domain.org");
     }
     @Test(priority = 3)
     // MW_2_03 Verify that password input field is functional
     void verifyPasswordInput() throws InterruptedException {
         // Input test password
-        driverChrome.findElement(By.id("signup_password_input")).sendKeys("123Test");
+        driver.findElement(By.id("signup_password_input")).sendKeys("123Test");
 
         // Clear text from password input field
-        driverChrome.findElement(By.id("signup_password_input")).clear();
+        driver.findElement(By.id("signup_password_input")).clear();
     }
 
     @Test(priority = 4)
         // MW_2_0
     void verifyPasswordCriteriaDynamic() throws InterruptedException {
         // Reload page
-        driverChrome.navigate().refresh();
+        driver.navigate().refresh();
 
         // Input test email address (this will allow us to get the final 'Looks Good!' checkmark)
-        driverChrome.findElement(By.id("signup_email_autocomplete")).sendKeys
+        driver.findElement(By.id("signup_email_autocomplete")).sendKeys
                 ("testemail@domain.org");
         // Click on sign up password input field to generate dynamic password criteria
-        driverChrome.findElement(By.id("signup_password_input")).click();
+        driver.findElement(By.id("signup_password_input")).click();
         Thread.sleep(1000);
 
         // Test the presence of the first checkmark (6 characters minimum requirement):
@@ -75,14 +74,13 @@ public class SignupPageTest {
     }
 
     // Helper function to:
-    // 1. Individually locate each checkmark element by xpath
+    // 1. Individually locate each checkmark element by cssSelector
     // 2. Input the corresponding password to satisfy the given requirement
-    // 3. Print whether the individual password criteria was satisfied or not along with the utilized password
-    private boolean isElementPresent(String xpath, String key) {
+    private boolean isElementPresent(String cssSelector, String key) {
         try {
-            driverChrome.findElement(By.id("signup_password_input")).sendKeys(key);
+            driver.findElement(By.id("signup_password_input")).sendKeys(key);
             Thread.sleep(2000);
-            driverChrome.findElement(By.cssSelector(xpath));
+            driver.findElement(By.cssSelector(cssSelector));
             return true;
         } catch (NoSuchElementException e) {
             return false;
