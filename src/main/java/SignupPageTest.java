@@ -5,13 +5,15 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
 public class SignupPageTest {
     // Initialize web driver
-    WebDriver driverChrome = new ChromeDriver();
+    WebDriver driverChrome = new FirefoxDriver();
     // Create a JavaScriptExecutor object for scrolling
     JavascriptExecutor js = (JavascriptExecutor) driverChrome;
 
@@ -50,20 +52,25 @@ public class SignupPageTest {
     void verifyPasswordCriteriaDynamic() throws InterruptedException {
         // Reload page
         driverChrome.navigate().refresh();
+
+        // Input test email address (this will allow us to get the final 'Looks Good!' checkmark)
+        driverChrome.findElement(By.id("signup_email_autocomplete")).sendKeys
+                ("testemail@domain.org");
         // Click on sign up password input field to generate dynamic password criteria
         driverChrome.findElement(By.id("signup_password_input")).click();
+        Thread.sleep(1000);
 
         // Test the presence of the first checkmark (6 characters minimum requirement):
-        boolean firstCheckmarkPresent = isElementPresent("//*[@id=\"__next\"]/main/section/div/aside/div/div/div/div/div[1]/div/form/ul/li[1]", "123456");
+        boolean firstCheckmarkPresent = isElementPresent("svg.icon__Icon-sc-18q4eit-0:nth-child(1)", "aaaaaa");
         Assert.assertTrue(firstCheckmarkPresent, "First checkmark not present.");
 
 
         // Test the presence of the second checkmark (Upper/lower case letter requirement):
-        boolean secondCheckmarkPresent = isElementPresent("//*[@id=\"__next\"]/main/section/div/aside/div/div/div/div/div[1]/div/form/ul/li[2]", "Aa");
+        boolean secondCheckmarkPresent = isElementPresent("li.sc-li3k8m-1:nth-child(2) > svg:nth-child(1)", "A");
         Assert.assertTrue(secondCheckmarkPresent, "Second checkmark not present.");
 
         // Test the presence of the third checkmark (Number or punctuation requirement):
-        boolean thirdCheckmarkPresent = isElementPresent("//*[@id=\"__next\"]/main/section/div/aside/div/div/div/div/div[1]/div/form/ul/li[3]", "!");
+        boolean thirdCheckmarkPresent = isElementPresent(".sc-1w81iwp-0", "!");
         Assert.assertTrue(thirdCheckmarkPresent, "Third checkmark not present.");
     }
 
@@ -73,24 +80,14 @@ public class SignupPageTest {
     // 3. Print whether the individual password criteria was satisfied or not along with the utilized password
     private boolean isElementPresent(String xpath, String key) {
         try {
-            driverChrome.findElement(By.xpath(xpath));
             driverChrome.findElement(By.id("signup_password_input")).sendKeys(key);
-            if (xpath.equals("//*[@id=\"__next\"]/main/section/div/aside/div/div/div/div/div[1]/div/form/ul/li[1]")) {
-                System.out.println("Six character minimum password requirement successfully met using the following " +
-                        "password: " + key);
-            }
-            if (xpath.equals("//*[@id=\"__next\"]/main/section/div/aside/div/div/div/div/div[1]/div/form/ul/li[2]")) {
-                System.out.println("Upper/lower case letter password requirement successfully met using the " +
-                        "following " + "password: " + key);
-            }
-            if (xpath.equals("//*[@id=\"__next\"]/main/section/div/aside/div/div/div/div/div[1]/div/form/ul/li[3]")) {
-                System.out.println("Number or punctuation password requirement successfully met using the following " +
-                        "password: " + key);
-            }
-            driverChrome.findElement(By.id("signup_password_input")).clear();
+            Thread.sleep(2000);
+            driverChrome.findElement(By.cssSelector(xpath));
             return true;
         } catch (NoSuchElementException e) {
             return false;
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
