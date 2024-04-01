@@ -1,11 +1,3 @@
-//      File: SignupPageTest.java
-// Author(s): Brett Anderson, Thomas Trinh
-//      Date: 03/31/2024
-//   Purpose: This file contains the tests for the Sign Up page unit of mathway.com.
-//            These automated web tests are performed using Selenium with the Chrome
-//            WebDriver Browser.
-
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
@@ -13,9 +5,10 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.Random;
+
+
 import java.util.List;
 import java.util.NoSuchElementException;
-
 
 public class SignupPageTest {
     // Initialize web driver
@@ -23,8 +16,8 @@ public class SignupPageTest {
     // Create a JavaScriptExecutor object for scrolling
     JavascriptExecutor js = (JavascriptExecutor) driver;
 
-    // MW_2_01 Verify that sign-up button on landing page is functional
     @Test (priority = 1)
+    // MW_2_01 Verify that sign-up button on landing page is functional
     void verifySignupButton() throws InterruptedException {
         // Open https://www.mathway.com and display site properties
         driver.get("https://www.mathway.com/");
@@ -36,17 +29,15 @@ public class SignupPageTest {
         // Click the "Sign Up" button from dropdown
         driver.findElement(By.xpath("//*[@id=\"user-menu\"]/a[2]/div[2]")).click();
     }
-
-    // MW_2_02 Verify that email address input is functional
     @Test (priority = 2)
+    // MW_2_02 Verify that email address input is functional
     void verifyEmailAddressInput() {
         // Input test email
         driver.findElement(By.id("signup_email_autocomplete")).sendKeys
                 ("testemail@domain.org");
     }
-
-    // MW_2_03 Verify that password input field is functional
     @Test(priority = 3)
+    // MW_2_03 Verify that password input field is functional
     void verifyPasswordInput() throws InterruptedException {
         // Input test password
         driver.findElement(By.id("signup_password_input")).sendKeys("123Test");
@@ -55,7 +46,6 @@ public class SignupPageTest {
         driver.findElement(By.id("signup_password_input")).clear();
     }
 
-    // MW_2_04 Verify that an email already linked to an account will prompt the user to log in
     @Test(priority = 4)
     void verifyInvalidEmail() throws InterruptedException {
         driver.findElement(By.id("signup_email_autocomplete")).clear();
@@ -65,8 +55,6 @@ public class SignupPageTest {
         driver.findElement(By.id("signup_email_autocomplete")).clear();
 
     }
-
-    // MW_2_05 Verify that an email already linked to an account will prompt the user to log in
     @Test(priority = 5)
     void verifyExistingEmail() throws InterruptedException {
         driver.findElement(By.id("signup_email_autocomplete")).sendKeys("testemail@domain.org");
@@ -75,9 +63,8 @@ public class SignupPageTest {
 
     }
 
-    // MW_2_06 Verify that password requirement criteria is dynamic and
-    // provides real-time updates as user meets password criteria
     @Test(priority = 6)
+        // MW_2_0
     void verifyPasswordCriteriaDynamic() throws InterruptedException {
         Thread.sleep(2000);
         // Input test email address (this will allow us to get the final 'Looks Good!' checkmark)
@@ -116,10 +103,9 @@ public class SignupPageTest {
             throw new RuntimeException(e);
         }
     }
-
-    // MW_2_07 Verify that a valid email address and valid password will allow the user to create an account
     @Test(priority = 7)
     void verifyAccountCreation() throws InterruptedException {
+
         // Clear previous input fields
         driver.findElement(By.id("signup_email_autocomplete")).clear();
         driver.findElement(By.id("signup_password_input")).clear();
@@ -137,4 +123,5 @@ public class SignupPageTest {
         driver.findElement(By.xpath("/html/body/div[1]/main/section/div/aside/div/div/div/div/div[1]" +
                 "/div/form/button")).click();
     }
+
 }
