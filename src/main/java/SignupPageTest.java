@@ -1,10 +1,10 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import java.util.Random;
 
 
 import java.util.List;
@@ -47,14 +47,29 @@ public class SignupPageTest {
     }
 
     @Test(priority = 4)
+    void verifyInvalidEmail() throws InterruptedException {
+        driver.findElement(By.id("signup_email_autocomplete")).clear();
+        driver.findElement(By.id("signup_email_autocomplete")).sendKeys
+                ("test");
+        Thread.sleep(2000);
+        driver.findElement(By.id("signup_email_autocomplete")).clear();
+
+    }
+    @Test(priority = 5)
+    void verifyExistingEmail() throws InterruptedException {
+        driver.findElement(By.id("signup_email_autocomplete")).sendKeys("testemail@domain.org");
+        Thread.sleep(2000);
+        driver.findElement(By.id("signup_email_autocomplete")).clear();
+
+    }
+
+    @Test(priority = 6)
         // MW_2_0
     void verifyPasswordCriteriaDynamic() throws InterruptedException {
-        // Reload page
-        driver.navigate().refresh();
-
+        Thread.sleep(2000);
         // Input test email address (this will allow us to get the final 'Looks Good!' checkmark)
         driver.findElement(By.id("signup_email_autocomplete")).sendKeys
-                ("testemail@domain.org");
+                ("testemail_2@domain.org");
         // Click on sign up password input field to generate dynamic password criteria
         driver.findElement(By.id("signup_password_input")).click();
         Thread.sleep(1000);
@@ -87,6 +102,26 @@ public class SignupPageTest {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+    @Test(priority = 7)
+    void verifyAccountCreation() throws InterruptedException {
+
+        // Clear previous input fields
+        driver.findElement(By.id("signup_email_autocomplete")).clear();
+        driver.findElement(By.id("signup_password_input")).clear();
+
+        // Generating random numbers between[10000, 99999] and appending to different email address components
+        // Allows this test case to be run multiple times without issues relating to repeated email addresses
+        Random random = new Random();
+        String firstRandomNumber = String.valueOf(random.nextInt(90000) + 10000);
+        String secondRandomNumber = String.valueOf(random.nextInt(90000) + 10000);
+        String email = "testemail_" + firstRandomNumber + "@testdomain" + secondRandomNumber + ".org";
+
+        driver.findElement(By.id("signup_email_autocomplete")).sendKeys(email);
+        Thread.sleep(2000);
+        driver.findElement(By.id("signup_password_input")).sendKeys("aaaaA!");
+        driver.findElement(By.xpath("/html/body/div[1]/main/section/div/aside/div/div/div/div/div[1]" +
+                "/div/form/button")).click();
     }
 
 }
