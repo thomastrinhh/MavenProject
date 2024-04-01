@@ -84,10 +84,10 @@ public class LoginPageTest {
                 "/div[1]/div/form/button/span/span[1]")).click();
     }
 
-    // Close web driver after login page tests complete
+    // Close web driver after tests complete
     @AfterTest
     void closeDriver() {
-        driver.close();
+        driver.quit();
     }
 
 }

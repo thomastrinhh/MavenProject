@@ -1,7 +1,7 @@
 //      File: SettingsPageTest.java
 // Author(s): Brett Anderson, Thomas Trinh
 //      Date: 03/31/2024
-//   Purpose: This file contains the tests for the Settings/Profile page unit of mathway.com.
+//   Purpose: This file contains the tests for the Settings/Profile Page unit of mathway.com.
 //            These automated web tests are performed using Selenium with the Chrome
 //            WebDriver Browser.
 
@@ -12,7 +12,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -282,7 +281,7 @@ public class SettingsPageTest {
         Thread.sleep(5000);
     }
 
-    // Close web driver after login page tests complete
+    // Close web driver after tests complete
     @AfterTest
     void closeDriver() {
         driver.quit();

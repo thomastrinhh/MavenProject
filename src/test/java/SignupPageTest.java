@@ -1,7 +1,7 @@
 //      File: SignupPageTest.java
 // Author(s): Brett Anderson, Thomas Trinh
 //      Date: 03/31/2024
-//   Purpose: This file contains the tests for the Sign Up page unit of mathway.com.
+//   Purpose: This file contains the tests for the Sign Up Page unit of mathway.com.
 //            These automated web tests are performed using Selenium with the Chrome
 //            WebDriver Browser.
 
@@ -9,6 +9,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -137,4 +138,11 @@ public class SignupPageTest {
         driver.findElement(By.xpath("/html/body/div[1]/main/section/div/aside/div/div/div/div/div[1]" +
                 "/div/form/button")).click();
     }
+
+    // Close web driver after tests complete
+    @AfterTest
+    void closeDriver() {
+        driver.quit();
+    }
+
 }
