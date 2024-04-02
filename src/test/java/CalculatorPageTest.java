@@ -9,6 +9,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -181,8 +182,21 @@ public class CalculatorPageTest {
         Thread.sleep(3000);
     }
 
-    // MW_4_07 Verify that exponents/powers are functional
+    // MW_4_07 Verify that 'Tap to view steps...' option is functional
+    // in the chat window
     @Test(priority = 7)
+    void verifyTapToViewSteps() throws InterruptedException {
+        // Click the 'Tap to view steps...' button under the answer
+        driver.findElements(By.className("ch-bubble-action")).getLast().click();
+        Thread.sleep(5000);
+
+        // Close the upgrade popup
+        driver.findElement(By.className("popup-close")).click();
+        Thread.sleep(3000);
+    }
+
+    // MW_4_08 Verify that exponents/powers are functional
+    @Test(priority = 8)
     void verifyExponents() throws InterruptedException {
         // Click the 8 key
         driver.findElement(By.cssSelector("div.kbRow:nth-child(2) > div:nth-child(3) > div:nth-child(2)")).click();
@@ -207,9 +221,9 @@ public class CalculatorPageTest {
     }
 
     // Linear Algebra tests
-    // MW_4_08 Verify that Domain and Range of a linear function
+    // MW_4_09 Verify that Domain and Range of a linear function
     // can be calculated.
-    @Test(priority = 8)
+    @Test(priority = 9)
     void verifyDomainRange() throws InterruptedException {
         // Click the f(x) key
         driver.findElement(By.cssSelector("div.kbRow:nth-child(1) > div:nth-child(11) > div:nth-child(2)")).click();
@@ -244,66 +258,39 @@ public class CalculatorPageTest {
         Thread.sleep(5000);
 
         // Verify the result of the operation
-        Assert.assertTrue(driver.findElement(By.xpath("//*[index='162']"))
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@index='162']"))
                 .isDisplayed(), "The correct result was not produced.");
         Thread.sleep(3000);
-        Assert.assertTrue(driver.findElement(By.xpath("//*[index='419']"))
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@index='419']"))
                 .isDisplayed(), "The correct result was not produced.");
         Thread.sleep(3000);
     }
 
-    // MW_4_09 Verify that 'Tap to show graph...' option is functional
+    // MW_4_10 Verify that 'Tap to show graph...' option is functional
     // in the chat window
-    @Test(priority = 9)
+    @Test(priority = 10)
     void verifyTapToShowGraph() throws InterruptedException {
         // Click the 'Tap to show graph...' button under the last answer
-        driver.findElement(By.cssSelector("div.ch-bubble:nth-child(16) > div:nth-child(2) > div:nth-child(1) > div:nth-child(3)")).click();
+        driver.findElements(By.className("ch-bubble-action")).getLast().click();
         Thread.sleep(5000);
 
         // Verify the graph is shown
-        Assert.assertTrue(driver.findElement(By.className("graph-thumbnail"))
-                .isDisplayed(), "The correct result was not produced.");
+        Assert.assertTrue(driver.findElements(By.className("GraphWrapper"))
+                .getLast().isDisplayed(), "The correct result was not produced.");
         Thread.sleep(3000);
     }
 
-    // MW_4_10 Verify that 'Tap to hide graph...' option is functional
+    // MW_4_11 Verify that 'Tap to hide graph...' option is functional
     // in the chat window
-    @Test(priority = 10)
+    @Test(priority = 11)
     void verifyTapToHideGraph() throws InterruptedException {
         // Click the 'Tap to hide graph...' button under the graph
-        driver.findElement(By.cssSelector(".co-toggle-open > div:nth-child(3)")).click();
+        driver.findElements(By.className("ch-bubble-action")).getLast().click();
         Thread.sleep(5000);
 
         // Verify the graph is no longer shown
-        Assert.assertFalse(driver.findElement(By.className("graph-thumbnail"))
-                .isDisplayed(), "The correct result was not produced.");
-        Thread.sleep(3000);
-    }
-
-    // MW_4_11 Verify that 'Tap to view steps...' option is functional
-    // in the chat window
-    @Test(priority = 11)
-    void verifyTapToViewSteps() throws InterruptedException {
-        // Click the 'Tap to view steps...' button under the answer
-        driver.findElement(By.cssSelector("div.ch-bubble:nth-child(4) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2)")).click();
-        Thread.sleep(5000);
-
-        // Close new tab
-        // Store all window handles to iterate through later
-        List<String> windowHandles = new ArrayList<>(driver.getWindowHandles());
-
-        // Switch to the newly opened tab
-        String newTabHandle = windowHandles.getLast();
-        driver.switchTo().window(newTabHandle);
-        Thread.sleep(3000);
-
-        // Close the newly opened tab
-        driver.close();
-        Thread.sleep(5000);
-
-        // Switch back to the original tab
-        String originalTabHandle = windowHandles.getFirst();
-        driver.switchTo().window(originalTabHandle);
+        Assert.assertFalse(driver.findElements(By.className("GraphWrapper"))
+                .getLast().isDisplayed(), "The correct result was not produced.");
         Thread.sleep(3000);
     }
 
