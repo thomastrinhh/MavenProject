@@ -2,11 +2,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Mathway Test Suite">
 
-    <test verbose="3" preserve-order="true" name="D:\projects\MavenProject\src\test\java">
+    <test preserve-order="true" name="Mathway Automated Tests">
         <classes>
             <class name="LoginPageTest"/>
             <class name="SignupPageTest"/>
             <class name="SettingsPageTest"/>
+            <class name="CalculatorPageTest"/>
         </classes>
     </test>
 </suite>
