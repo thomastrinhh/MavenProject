@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class SettingsPageTest {
         Thread.sleep(5000);
         // Click the Account icon on landing page
         driver.findElement(By.xpath("//*[@id=\"top-menu\"]/div/div[2]/div[2]/i")).click();
-        //Thread.sleep(1000);
+        Thread.sleep(3000);
         // Click the "Sign In" button from dropdown
         driver.findElement(By.xpath("//*[@id=\"user-menu\"]/a[1]/div[2]")).click();
         // Input email address for test account (email = 'cyna77801@5o0x6ajj.crankymonkey.info')
@@ -286,4 +287,5 @@ public class SettingsPageTest {
     void closeDriver() {
         driver.quit();
     }
+
 }

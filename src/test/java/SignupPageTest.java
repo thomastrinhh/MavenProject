@@ -33,7 +33,7 @@ public class SignupPageTest {
 
         // Click the Account icon on landing page
         driver.findElement(By.xpath("//*[@id=\"top-menu\"]/div/div[2]/div[2]/i")).click();
-        //Thread.sleep(1000);
+        Thread.sleep(3000);
         // Click the "Sign Up" button from dropdown
         driver.findElement(By.xpath("//*[@id=\"user-menu\"]/a[2]/div[2]")).click();
     }
