@@ -144,7 +144,7 @@ public class CalculatorPageTest {
 
         //Click the 'Send' button (arrow icon)
         driver.findElement(By.cssSelector(".mw-paper-airplane")).click();
-        Thread.sleep(3000);
+        Thread.sleep(5000);
 
         // Click the 'Divide' option from the menu
         driver.findElement(By.xpath("//*[@data-id='13']")).click();
@@ -153,6 +153,157 @@ public class CalculatorPageTest {
         // Verify the result of the operation
         Assert.assertTrue(driver.findElement(By.xpath("//*[@data-mathml='<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mn>2</mn></mstyle></math>']"))
                 .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+    }
+
+    // MW_4_06 Verify that square root is functional
+    @Test(priority = 6)
+    void verifySquareRoot() throws InterruptedException {
+        // Click the Square Root key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(1) > div:nth-child(6) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 9 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(2) > div:nth-child(4) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        //Click the 'Send' button (arrow icon)
+        driver.findElement(By.cssSelector(".mw-paper-airplane")).click();
+        Thread.sleep(3000);
+
+        // Click the 'Calculate the Square Root' option from the menu
+        driver.findElement(By.xpath("//*[@data-id='49']")).click();
+        Thread.sleep(5000);
+
+        // Verify the result of the operation
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@data-mathml='<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mn>3</mn></mstyle></math>']"))
+                .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+    }
+
+    // MW_4_07 Verify that exponents/powers are functional
+    @Test(priority = 7)
+    void verifyExponents() throws InterruptedException {
+        // Click the 8 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(2) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the Exponent key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(2) > div:nth-child(6) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 2 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        //Click the 'Send' button (arrow icon)
+        driver.findElement(By.cssSelector(".mw-paper-airplane")).click();
+        Thread.sleep(5000);
+
+        // Verify the result of the operation
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@data-mathml='<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mn>64</mn></mstyle></math>']"))
+                .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+    }
+
+    // Linear Algebra tests
+    // MW_4_08 Verify that Domain and Range of a linear function
+    // can be calculated.
+    @Test(priority = 8)
+    void verifyDomainRange() throws InterruptedException {
+        // Click the f(x) key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(1) > div:nth-child(11) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the = key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(5) > div:nth-child(7) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 2 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the x key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(2) > div:nth-child(1) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the + key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(6) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 1 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        //Click the 'Send' button (arrow icon)
+        driver.findElement(By.cssSelector(".mw-paper-airplane")).click();
+        Thread.sleep(3000);
+
+        // Click the 'Find the Domain and Range' option from the menu
+        driver.findElement(By.xpath("//*[@data-id='2065']")).click();
+        Thread.sleep(5000);
+
+        // Verify the result of the operation
+        Assert.assertTrue(driver.findElement(By.xpath("//*[index='162']"))
+                .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[index='419']"))
+                .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+    }
+
+    // MW_4_09 Verify that 'Tap to show graph...' option is functional
+    // in the chat window
+    @Test(priority = 9)
+    void verifyTapToShowGraph() throws InterruptedException {
+        // Click the 'Tap to show graph...' button under the last answer
+        driver.findElement(By.cssSelector("div.ch-bubble:nth-child(16) > div:nth-child(2) > div:nth-child(1) > div:nth-child(3)")).click();
+        Thread.sleep(5000);
+
+        // Verify the graph is shown
+        Assert.assertTrue(driver.findElement(By.className("graph-thumbnail"))
+                .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+    }
+
+    // MW_4_10 Verify that 'Tap to hide graph...' option is functional
+    // in the chat window
+    @Test(priority = 10)
+    void verifyTapToHideGraph() throws InterruptedException {
+        // Click the 'Tap to hide graph...' button under the graph
+        driver.findElement(By.cssSelector(".co-toggle-open > div:nth-child(3)")).click();
+        Thread.sleep(5000);
+
+        // Verify the graph is no longer shown
+        Assert.assertFalse(driver.findElement(By.className("graph-thumbnail"))
+                .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+    }
+
+    // MW_4_11 Verify that 'Tap to view steps...' option is functional
+    // in the chat window
+    @Test(priority = 11)
+    void verifyTapToViewSteps() throws InterruptedException {
+        // Click the 'Tap to view steps...' button under the answer
+        driver.findElement(By.cssSelector("div.ch-bubble:nth-child(4) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2)")).click();
+        Thread.sleep(5000);
+
+        // Close new tab
+        // Store all window handles to iterate through later
+        List<String> windowHandles = new ArrayList<>(driver.getWindowHandles());
+
+        // Switch to the newly opened tab
+        String newTabHandle = windowHandles.getLast();
+        driver.switchTo().window(newTabHandle);
+        Thread.sleep(3000);
+
+        // Close the newly opened tab
+        driver.close();
+        Thread.sleep(5000);
+
+        // Switch back to the original tab
+        String originalTabHandle = windowHandles.getFirst();
+        driver.switchTo().window(originalTabHandle);
         Thread.sleep(3000);
     }
 
