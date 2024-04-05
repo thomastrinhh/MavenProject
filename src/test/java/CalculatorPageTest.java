@@ -119,8 +119,11 @@ public class CalculatorPageTest {
         Thread.sleep(5000);
 
         // Verify the result of the operation
-        Assert.assertTrue(driver.findElement(By.xpath("//*[@data-mathml='<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mn>30</mn></mstyle></math>']"))
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@data-mathml='<math xmlns=" +
+                        "\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mn>30</mn>" +
+                        "</mstyle></math>']"))
                 .isDisplayed(), "The correct result was not produced.");
+
         Thread.sleep(3000);
     }
 

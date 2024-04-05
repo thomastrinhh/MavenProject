@@ -23,10 +23,12 @@ public class LoginPageTest {
 
     // MW_1_01 Verify that landing page is functional
     @Test (priority = 1)
-    void verifyLandingPageOpens() throws InterruptedException {
+    void verifyLandingPageOpens()
+            throws InterruptedException {
+
         // Open https://www.mathway.com and display site properties
         driver.get("https://www.mathway.com/");
-        driver.manage().window().maximize();
+        driver.manage().window().maximize(); // Maximize window
 
         // Get the web page's title
         String siteTitle = driver.getTitle();
@@ -52,6 +54,7 @@ public class LoginPageTest {
     @Test(priority = 3)
     void verifyEmailAddressInput() throws InterruptedException {
         // Input email address for test account (email = 'cyna77801@5o0x6ajj.crankymonkey.info')
+        Thread.sleep(3000);
         driver.findElement(By.id("login_email_input")).sendKeys
                 ("cyna77801@5o0x6ajj.crankymonkey.info");
     }

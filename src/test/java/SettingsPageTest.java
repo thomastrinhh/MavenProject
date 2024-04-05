@@ -37,6 +37,7 @@ public class SettingsPageTest {
         // Click the "Sign In" button from dropdown
         driver.findElement(By.xpath("//*[@id=\"user-menu\"]/a[1]/div[2]")).click();
         // Input email address for test account (email = 'cyna77801@5o0x6ajj.crankymonkey.info')
+        Thread.sleep(5000);
         driver.findElement(By.id("login_email_input")).sendKeys
                 ("cyna77801@5o0x6ajj.crankymonkey.info");
         // Input correct password for test account (e.g., password = '123Test')
