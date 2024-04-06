@@ -39,6 +39,7 @@ public class CalculatorPageTest {
         // Click the "Sign In" button from dropdown
         driver.findElement(By.xpath("//*[@id=\"user-menu\"]/a[1]/div[2]")).click();
         // Input email address for test account (email = 'cyna77801@5o0x6ajj.crankymonkey.info')
+        Thread.sleep(3000);
         driver.findElement(By.id("login_email_input")).sendKeys
                 ("cyna77801@5o0x6ajj.crankymonkey.info");
         // Input correct password for test account (e.g., password = '123Test')
@@ -119,8 +120,11 @@ public class CalculatorPageTest {
         Thread.sleep(5000);
 
         // Verify the result of the operation
-        Assert.assertTrue(driver.findElement(By.xpath("//*[@data-mathml='<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mn>30</mn></mstyle></math>']"))
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@data-mathml='<math xmlns=" +
+                        "\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mn>30</mn>" +
+                        "</mstyle></math>']"))
                 .isDisplayed(), "The correct result was not produced.");
+
         Thread.sleep(3000);
     }
 

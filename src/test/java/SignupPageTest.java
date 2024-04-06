@@ -40,8 +40,9 @@ public class SignupPageTest {
 
     // MW_2_02 Verify that email address input is functional
     @Test (priority = 2)
-    void verifyEmailAddressInput() {
+    void verifyEmailAddressInput() throws InterruptedException {
         // Input test email
+        Thread.sleep(3000);
         driver.findElement(By.id("signup_email_autocomplete")).sendKeys
                 ("testemail@domain.org");
     }
@@ -90,16 +91,17 @@ public class SignupPageTest {
 
         // Test the presence of the first checkmark (6 characters minimum requirement):
         boolean firstCheckmarkPresent = isElementPresent("svg.icon__Icon-sc-18q4eit-0:nth-child(1)", "aaaaaa");
+        Thread.sleep(3000);
         Assert.assertTrue(firstCheckmarkPresent, "First checkmark not present.");
 
-
         // Test the presence of the second checkmark (Upper/lower case letter requirement):
-        boolean secondCheckmarkPresent = isElementPresent("li.sc-li3k8m-1:nth-child(2) > svg:nth-child(1)", "A");
+        boolean secondCheckmarkPresent = isElementPresent("li.sc-li3k8m-3:nth-child(2) > div:nth-child(1) > svg:nth-child(1) > path:nth-child(1)", "A");
         Assert.assertTrue(secondCheckmarkPresent, "Second checkmark not present.");
-
         // Test the presence of the third checkmark (Number or punctuation requirement):
         boolean thirdCheckmarkPresent = isElementPresent(".sc-1w81iwp-0", "!");
+        Thread.sleep(3000);
         Assert.assertTrue(thirdCheckmarkPresent, "Third checkmark not present.");
+        Thread.sleep(3000);
     }
 
     // Helper function to:
