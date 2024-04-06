@@ -294,6 +294,690 @@ public class CalculatorPageTest {
         Thread.sleep(3000);
     }
 
+    // MW_4_12 Verify that X and Y intercepts of a linear function
+    // can be calculated.
+    @Test(priority = 12)
+    void verifyXYIntercepts() throws InterruptedException {
+        // Click the f(x) key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(1) > div:nth-child(11) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the = key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(5) > div:nth-child(7) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 2 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the x key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(2) > div:nth-child(1) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the + key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(6) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 1 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        //Click the 'Send' button (arrow icon)
+        driver.findElement(By.cssSelector(".mw-paper-airplane")).click();
+        Thread.sleep(3000);
+
+        // Click the 'Find the x and y Intercepts' option from the menu
+        driver.findElement(By.xpath("//*[@data-id='2115']")).click();
+        Thread.sleep(5000);
+
+        // Verify the result of the operation
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@index='535']"))
+                .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@index='538']"))
+                .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+    }
+
+    // MW_4_13 Verify that the inverse of a linear function
+    // can be calculated.
+    @Test(priority = 13)
+    void verifyInverse() throws InterruptedException {
+        // Click the f(x) key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(1) > div:nth-child(11) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the = key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(5) > div:nth-child(7) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 2 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the x key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(2) > div:nth-child(1) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the + key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(6) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 1 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        //Click the 'Send' button (arrow icon)
+        driver.findElement(By.cssSelector(".mw-paper-airplane")).click();
+        Thread.sleep(3000);
+
+        // Click the 'Find the Inverse' option from the menu
+        driver.findElement(By.xpath("//*[@data-id='2125']")).click();
+        Thread.sleep(5000);
+
+        // Verify the result of the operation
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@index='266']"))
+                .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+    }
+
+    // MW_4_14 Verify that the derivative of a function
+    // can be calculated.
+    @Test(priority = 14)
+    void verifyFirstDerivative() throws InterruptedException {
+        // Click the f(x) key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(1) > div:nth-child(11) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the = key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(5) > div:nth-child(7) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 2 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the x key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(2) > div:nth-child(1) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the + key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(6) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 1 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        //Click the 'Send' button (arrow icon)
+        driver.findElement(By.cssSelector(".mw-paper-airplane")).click();
+        Thread.sleep(3000);
+
+        // Click the 'Find the Derivative' option from the menu
+        driver.findElement(By.xpath("//*[@data-id='14']")).click();
+        Thread.sleep(5000);
+
+        // Verify the result of the operation
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@data-mathml='<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mn>2</mn></mstyle></math>']"))
+                .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+    }
+
+    // MW_4_15 Verify that the 'More...' button to expand the answer options
+    // is functional.
+    @Test(priority = 15)
+    void verifyMoreOptions() throws InterruptedException {
+        // Click the f(x) key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(1) > div:nth-child(11) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the = key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(5) > div:nth-child(7) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 2 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the x key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(2) > div:nth-child(1) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the + key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(6) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 1 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        //Click the 'Send' button (arrow icon)
+        driver.findElement(By.cssSelector(".mw-paper-airplane")).click();
+        Thread.sleep(3000);
+
+        // Click the 'More...' button at the bottom of the 'How should I answer?' list
+        driver.findElement(By.cssSelector(".topics-more")).click();
+        Thread.sleep(3000);
+    }
+
+    // MW_4_16 Verify that the second derivative of a function
+    // can be calculated.
+    @Test(priority = 16)
+    void verifySecondDerivative() throws InterruptedException {
+        // Click the 'Find the Second Derivative' option from the menu
+        driver.findElement(By.xpath("//*[@data-id='2097']")).click();
+        Thread.sleep(5000);
+
+        // Verify the result of the operation
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@data-mathml='<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mn>0</mn></mstyle></math>']"))
+                .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+    }
+
+    // MW_4_17 Verify that the calculator menu button
+    // is functional.
+    @Test(priority = 17)
+    void verifyCalculatorMenu() throws InterruptedException {
+        // Click the three horizontal lines menu button
+        driver.findElement(By.cssSelector(".mw-hamburger")).click();
+        Thread.sleep(3000);
+    }
+
+    // MW_4_18 Verify 'Calculus' menu option is functional
+    @Test(priority = 18)
+    void verifyCalculusOption() throws InterruptedException {
+        // Click the 'Calculus' menu option
+        driver.findElement(By.cssSelector("a.menu-row:nth-child(6) > div:nth-child(2)")).click();
+        Thread.sleep(3000);
+    }
+
+    // MW_4_19 Verify that the integral of a function
+    // can be calculated.
+    @Test(priority = 19)
+    void verifyIntegral() throws InterruptedException {
+        // Click the Integral key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(1) > div:nth-child(10) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 2 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the x key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(2) > div:nth-child(1) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the + key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(6) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 1 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        //Click the 'Send' button (arrow icon)
+        driver.findElement(By.cssSelector(".mw-paper-airplane")).click();
+        Thread.sleep(3000);
+
+        // Verify the result of the operation
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@index='548']"))
+                .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+    }
+
+    // MW_4_20 Verify 'Trigonometry' menu option is functional
+    @Test(priority = 20)
+    void verifyTrigonometryOption() throws InterruptedException {
+        // Click the three horizontal lines menu button
+        driver.findElement(By.cssSelector(".mw-hamburger")).click();
+        Thread.sleep(3000);
+
+        // Click the 'Trigonometry' menu option
+        driver.findElement(By.cssSelector("a.menu-row:nth-child(6) > div:nth-child(2)")).click();
+        Thread.sleep(3000);
+    }
+
+    // MW_4_21 Verify that the sine of an angle
+    // can be calculated.
+    @Test(priority = 21)
+    void verifySine() throws InterruptedException {
+        // Click the Sin key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(1) > div:nth-child(9) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 3 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(4) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 0 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(5) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        //Click the 'Send' button (arrow icon)
+        driver.findElement(By.cssSelector(".mw-paper-airplane")).click();
+        Thread.sleep(3000);
+
+        // If the popup window comes up asking how it should answer, select
+        // the 'Evaluate' option from the menu. (Only happens sometimes)
+        if (driver.findElement(By.cssSelector(".popup-container")).isDisplayed()) {
+            // Click the 'Evaluate' option from the menu
+            driver.findElement(By.xpath("//*[@data-id='395']")).click();
+            Thread.sleep(5000);
+        }
+
+        // Verify the result of the operation
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@data-mathml='<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mn>0.5</mn></mstyle></math>']"))
+                .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+    }
+
+    // MW_4_22 Verify that the cosine of an angle
+    // can be calculated.
+    @Test(priority = 22)
+    void verifyCosine() throws InterruptedException {
+        // Click the Cos key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(2) > div:nth-child(9) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 3 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(4) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 0 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(5) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        //Click the 'Send' button (arrow icon)
+        driver.findElement(By.cssSelector(".mw-paper-airplane")).click();
+        Thread.sleep(3000);
+
+        // If the popup window comes up asking how it should answer, select
+        // the 'Evaluate' option from the menu. (Only happens sometimes)
+        if (driver.findElement(By.cssSelector(".popup-container")).isDisplayed()) {
+            // Click the 'Evaluate' option from the menu
+            driver.findElement(By.xpath("//*[@data-id='395']")).click();
+            Thread.sleep(5000);
+        }
+
+        // Verify the result of the operation
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@data-mathml='<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mn>0.86602540</mn></mstyle></math>']"))
+                .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+    }
+
+    // MW_4_23 Verify that the tangent of an angle
+    // can be calculated.
+    @Test(priority = 23)
+    void verifyTangent() throws InterruptedException {
+        // Click the Tan key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(9) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 3 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(4) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 0 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(5) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        //Click the 'Send' button (arrow icon)
+        driver.findElement(By.cssSelector(".mw-paper-airplane")).click();
+        Thread.sleep(3000);
+
+        // If the popup window comes up asking how it should answer, select
+        // the 'Evaluate' option from the menu. (Only happens sometimes)
+        if (driver.findElement(By.cssSelector(".popup-container")).isDisplayed()) {
+            // Click the 'Evaluate' option from the menu
+            driver.findElement(By.xpath("//*[@data-id='395']")).click();
+            Thread.sleep(5000);
+        }
+
+        // Verify the result of the operation
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@data-mathml='<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mn>0.57735026</mn></mstyle></math>']"))
+                .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+    }
+
+    // MW_4_24 Verify that the angles of a triangle
+    // can be calculated from the sides.
+    @Test(priority = 24)
+    void verifyTriangleTool() throws InterruptedException {
+        // Click the Triangle key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(10) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 4 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the right arrow button twice to get to the 'c' field
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(1000);
+
+        // Click the 5 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the right arrow button twice to get to the 'a' field
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(1000);
+
+        // Click the 3 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(4) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        //Click the 'Send' button (arrow icon)
+        driver.findElement(By.cssSelector(".mw-paper-airplane")).click();
+        Thread.sleep(3000);
+
+        // If the popup window comes up asking how it should answer, select
+        // the 'Solve the Triangle' option from the menu. (Only happens sometimes)
+        if (driver.findElement(By.cssSelector(".popup-container")).isDisplayed()) {
+            // Click the 'Solve the Triangle' option from the menu
+            driver.findElement(By.xpath("//*[@data-id='394']")).click();
+            Thread.sleep(5000);
+        }
+
+        // Verify the result of the operation
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@data-mathml='<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mn>36.86989764</mn></mstyle></math>']"))
+                .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+    }
+
+    // MW_4_25 Verify 'Linear Algebra' menu option is functional
+    @Test(priority = 25)
+    void verifyLinearAlgebraOption() throws InterruptedException {
+        // Click the three horizontal lines menu button
+        driver.findElement(By.cssSelector(".mw-hamburger")).click();
+        Thread.sleep(3000);
+
+        // Click the 'Linear Algebra' menu option
+        driver.findElement(By.cssSelector("a.menu-row:nth-child(9) > div:nth-child(2)")).click();
+        Thread.sleep(3000);
+    }
+
+    // MW_4_26 Verify that the determinant of a matrix
+    // can be calculated.
+    @Test(priority = 26)
+    void verifyMatrixTool() throws InterruptedException {
+        // Click the Matrix key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(1) > div:nth-child(9) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Select the matrix size
+        // Show that the size can be changed
+        driver.findElement(By.cssSelector(".matrix-cells > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2) > div:nth-child(1)")).click();
+        Thread.sleep(2000);
+
+        // Changed to 3x3
+        driver.findElement(By.cssSelector(".matrix-cells > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(3) > div:nth-child(1)")).click();
+        Thread.sleep(2000);
+
+        // Click the 'Insert' button
+        driver.findElement(By.id("matrix-select")).click();
+        Thread.sleep(4000);
+
+        // Click the 4 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the right arrow button to get to the next field
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(1000);
+
+        // Click the 5 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the right arrow button to get to the next field
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(1000);
+
+        // Click the 3 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(4) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the right arrow button to get to the next field
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(1000);
+
+        // Click the 3 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(4) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the right arrow button to get to the next field
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(1000);
+
+        // Click the 4 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the right arrow button to get to the next field
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(1000);
+
+        // Click the 5 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the right arrow button to get to the next field
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(1000);
+
+        // Click the 4 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the right arrow button to get to the next field
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(1000);
+
+        // Click the 5 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the right arrow button to get to the next field
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(1000);
+
+        // Click the 3 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(4) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        //Click the 'Send' button (arrow icon)
+        driver.findElement(By.cssSelector(".mw-paper-airplane")).click();
+        Thread.sleep(3000);
+
+        // If the popup window comes up asking how it should answer, select
+        // the 'Find the Determinant' option from the menu. (Only happens sometimes)
+        if (driver.findElement(By.cssSelector(".popup-container")).isDisplayed()) {
+            // Click the 'Find the Determinant' option from the menu
+            driver.findElement(By.xpath("//*[@data-id='251']")).click();
+            Thread.sleep(5000);
+        }
+
+        // Verify the result of the operation
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@data-mathml='<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mn>0</mn></mstyle></math>']"))
+                .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+    }
+
+    // MW_4_27 Verify 'Physics' menu option is functional
+    @Test(priority = 27)
+    void verifyPhysicsOption() throws InterruptedException {
+        // Click the three horizontal lines menu button
+        driver.findElement(By.cssSelector(".mw-hamburger")).click();
+        Thread.sleep(3000);
+
+        // Click the 'Physics' menu option
+        driver.findElement(By.cssSelector("a.menu-row:nth-child(11) > div:nth-child(2)")).click();
+        Thread.sleep(3000);
+    }
+
+    // MW_4_28 Verify 'Greek Alphabet' calculator button is functional
+    @Test(priority = 28)
+    void verifyGreekAlphabetButton() throws InterruptedException {
+        // Click the 'Greek Alphabet' calculator button
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(2) > div:nth-child(9) > div:nth-child(2)")).click();
+        Thread.sleep(3000);
+
+        // Close the menu
+        driver.findElement(By.cssSelector(".popup-close > i:nth-child(1)")).click();
+        Thread.sleep(3000);
+    }
+
+    // MW_4_29 Verify 'Trigonometric Functions' calculator button is functional
+    @Test(priority = 29)
+    void verifyTrigonometricFunctionsButton() throws InterruptedException {
+        // Click the 'Trigonometric Functions' calculator button
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(2) > div:nth-child(10) > div:nth-child(2)")).click();
+        Thread.sleep(3000);
+
+        // Close the menu
+        driver.findElement(By.cssSelector(".popup-container")).click();
+        Thread.sleep(3000);
+    }
+
+    // MW_4_30 Verify 'Equations' calculator button is functional
+    @Test(priority = 30)
+    void verifyEquationsButton() throws InterruptedException {
+        // Click the 'Equations' calculator button
+        driver.findElement(By.cssSelector(".small")).click();
+        Thread.sleep(3000);
+    }
+
+    // MW_4_31 Verify that a physics equation can be solved
+    @Test(priority = 31)
+    void verifyPhysicsEquation() throws InterruptedException {
+        // Click the Force equation from the menu
+        driver.findElement(By.cssSelector("div.equation-single:nth-child(1)")).click();
+        Thread.sleep(2000);
+
+        // Click the right arrow button to get to the next field
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(1000);
+
+        // Click the 5 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 0 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(5) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the right arrow button to get to the next field
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(1000);
+
+        // Click the 5 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(3) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        //Click the 'Send' button (arrow icon)
+        driver.findElement(By.cssSelector(".mw-paper-airplane")).click();
+        Thread.sleep(3000);
+
+        // Verify the result of the operation
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@data-mathml='<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mstyle displaystyle=\"true\"><mn>3</mn></mstyle></math>']"))
+                .isDisplayed(), "The correct result was not produced.");
+        Thread.sleep(3000);
+    }
+
+    // MW_4_32 Verify 'Graphing' menu option is functional
+    @Test(priority = 32)
+    void verifyGraphingOption() throws InterruptedException {
+        // Click the three horizontal lines menu button
+        driver.findElement(By.cssSelector(".mw-hamburger")).click();
+        Thread.sleep(3000);
+
+        // Click the 'Graphing' menu option
+        driver.findElement(By.cssSelector("a.menu-row:nth-child(12) > div:nth-child(2)")).click();
+        Thread.sleep(3000);
+    }
+
+    // MW_4_33 Verify that typing in different functions dynamically changes the
+    // graph on the screen.
+    @Test(priority = 33)
+    void verifyGraphingScreenIsDynamic() throws InterruptedException {
+        // Click the f(x) key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(1) > div:nth-child(11) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the = key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(5) > div:nth-child(7) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 2 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(3) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the x key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(2) > div:nth-child(1) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the + key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(6) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 1 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click to add another graph
+        driver.findElement(By.cssSelector("#editor-number-20")).click();
+        Thread.sleep(2000);
+
+        // Click the f(x) key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(1) > div:nth-child(11) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the = key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(5) > div:nth-child(7) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the - key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(5) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the x key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(2) > div:nth-child(1) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the - key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(5) > div:nth-child(2)")).click();
+        Thread.sleep(2000);
+
+        // Click the 1 key
+        driver.findElement(By.cssSelector("div.kbRow:nth-child(4) > div:nth-child(2) > div:nth-child(2)")).click();
+        Thread.sleep(4000);
+    }
+
+    // MW_4_34 Verify you can zoom in and out on the graph.
+    @Test(priority = 34)
+    void verifyGraphZoom() throws InterruptedException {
+        // Click the 'Zoom In' button
+        driver.findElement(By.id("graph-zoom-in")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.id("graph-zoom-in")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.id("graph-zoom-in")).click();
+        Thread.sleep(1000);
+
+        // Click the 'Zoom Out' button
+        driver.findElement(By.id("graph-zoom-out")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.id("graph-zoom-out")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.id("graph-zoom-out")).click();
+        Thread.sleep(1000);
+    }
+
     // Close web driver after tests complete
     @AfterTest
     void closeDriver() {
