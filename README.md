@@ -1,6 +1,6 @@
 # CEN 4072 Software Testing Project
 
-This repository contains the project work for the CEN 4072 Software Testing course. The project focuses on testing the login functionality of chat.openai.com using Selenium with the Chrome WebDriver Browser. The tests are automated and implemented in Java.
+This repository contains the project work for the CEN 4072 Software Testing course. The project focuses on testing the login functionality of Mathway.com using Selenium with the Firefox WebDriver Browser. The tests are automated and implemented in Java.
 
 ## Project Structure
 
